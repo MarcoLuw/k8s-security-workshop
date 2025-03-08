@@ -46,21 +46,19 @@
 ### 5. Extending Security with External Tools  
 - **Why?** → Shortcomings of Built-in Features  
 - **Policy Enforcement with:**  
-  - OPA & Gatekeeper (M9sweeper)  
+  - OPA Gatekeeper (M9sweeper)
+  - kubesec (Evaluates YAML manifests) 
 
 ## Module 4. Code Security  
 ### 1. Vulnerability Scanning & Intrusion Detection  
 - What it does?  
 - About CVE scanning  
 
-### 2. Scanning & Hardening Kubernetes Manifests  
-- **kubesec** (Evaluates YAML manifests)  
-
-### 3. Scanning Container Images for CVEs  
+### 2. Scanning Container Images for CVEs  
 - **CVE Scanning with Trivy** (Scans container images for known CVEs)  
 - **CVE Scanning in M9sweeper** (Extending security automation & policies)  
 
-### 4. Runtime Intrusion Detection  
+### 3. Runtime Intrusion Detection  
 - **Project Falco** and Intrusion Detection (Detecting abnormal behavior in clusters)  
 
 ---
