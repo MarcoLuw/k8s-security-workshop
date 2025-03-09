@@ -4,10 +4,10 @@
 ### 1. Kubernetes Security
 - Why do we need security?
 - Kubernetes Architecture Diagram
+- Kubernetes Security Best Practices  
 
 ### 2. The 4 C's of Kubernetes Security  
 - Cloud, Cluster, Container, Code  
-- Kubernetes Security Best Practices  
 
 ## Module 2. Cluster Security  
 ### 1. Kubernetes Cluster Security Fundamentals  
