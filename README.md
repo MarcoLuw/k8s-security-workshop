@@ -20,12 +20,12 @@
 
 - **Example:**
    ![Tesla Kubernetes Cryptojacking Incident](image/tesla-credentials.png)
-    **Tesla Kubernetes Cryptojacking Incident (2018)**  
+  - **Tesla Kubernetes Cryptojacking Incident (2018)**  
       [Article Link](https://arstechnica.com/information-technology/2018/02/tesla-cloud-resources-are-hacked-to-run-cryptocurrency-mining-malware/)
     
-    **What happened:** Attackers exploited an exposed Kubernetes dashboard with no authentication and deployed a cryptomining script inside Tesla's Kubernetes cluster.
+  - **What happened:** Attackers exploited an exposed Kubernetes dashboard with no authentication and deployed a cryptomining script inside Tesla's Kubernetes cluster.
       
-    **Consequences:**
+  - **Consequences:**
       - Unauthorized access to Kubernetes workloads
       - Increased cloud costs due to resource hijacking
       - Potential exposure of sensitive telemetry data
