@@ -19,13 +19,13 @@
 #### Why do we need Security?
 
 - **Example:**
-    - **Picture:** ![Kubernetes Security Example](image/k8s_security_example.png)
-    - **Tesla Kubernetes Cryptojacking Incident (2018)**  
+   ![Tesla Kubernetes Cryptojacking Incident](image/tesla-credentials.png)
+    **Tesla Kubernetes Cryptojacking Incident (2018)**  
       [Article Link](https://arstechnica.com/information-technology/2018/02/tesla-cloud-resources-are-hacked-to-run-cryptocurrency-mining-malware/)
     
-      **What happened:** Attackers exploited an exposed Kubernetes dashboard with no authentication and deployed a cryptomining script inside Tesla's Kubernetes cluster.
+    **What happened:** Attackers exploited an exposed Kubernetes dashboard with no authentication and deployed a cryptomining script inside Tesla's Kubernetes cluster.
       
-      **Consequences:**
+    **Consequences:**
       - Unauthorized access to Kubernetes workloads
       - Increased cloud costs due to resource hijacking
       - Potential exposure of sensitive telemetry data
@@ -36,10 +36,7 @@
 
 #### Kubernetes Architecture
 
-- **Picture:** ![Kubernetes Architecture](image/k8s_architecture.png)
-- **Notes:**
-    - Controlling access to the Kubernetes API
-    - Restricting access to etcd
+![Kubernetes Architecture](image/components-of-kubernetes.png)
 
 #### Kubernetes Security Best Practices
 
@@ -49,8 +46,8 @@
 
 ### 2. The 4 C's of Kubernetes Security
 
-- **Cloud, Cluster, Container, Code**
-- **Picture:** ![4 C's of Kubernetes Security](image/4cs_k8s_security.png)
+**Cloud, Cluster, Container, Code**
+![4 C's of Kubernetes Security](image/4C-cloud.png)
 
 ---
 
@@ -84,7 +81,7 @@
 #### What is container breakout?
 - If an application is given escalated privileges, it could break out of its container and execute commands as if it were a user in the host OS.
 - This allows an attacker to escape from a container to the host and move laterally across other containers.
-- **Picture:** ![Container Breakout](image/container_breakout.png)
+  ![Container Breakout](image/3.2-container-breakout.png)
 
 #### Example
 - A simple way to do this is to run as root and execute Linux kernel commands using a Perl script to change the root directory.
@@ -117,7 +114,7 @@ spec:
 - Avoid Mounting the Host’s Root Directory.
 - Limit Service Account Privileges.
 - Limit Linux Kernel Calls (SecComp, AppArmor).
-- **Picture:** ![Kernel Security](image/kernel_security.png)
+  ![Kernel Security](image/capabilities-systemcalls.png)
 
 ```yaml
 apiVersion: v1
