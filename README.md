@@ -1,11 +1,11 @@
 # Kubernetes Security  
 
-## Module 1. Kubernetes and Cloud Security Basics  
-### 1. Kubernetes Architecture  
-- Deploying a Pod and Deployment  
-- Other Object Types  
+## Module 1. Kubernetes and Cloud Security Basics
+### 1. Kubernetes Security
+- Why do we need security?
+- Kubernetes Architecture Diagram
 
-### 2. The 4 C's of Cloud Security  
+### 2. The 4 C's of Kubernetes Security  
 - Cloud, Cluster, Container, Code  
 - Kubernetes Security Best Practices  
 
