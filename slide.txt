@@ -46,6 +46,13 @@ Modules 2. Cluster Security
 
 Modules 3. Container Security
 
+Agenda
+1. Containers & Isolation Overview
+2. Container Breakout
+3. Preventing Container Breakout
+4. Using Kubernetes' Built-in Security Features
+5. Extending Security with External Tools
+
 1. Containers & Isolation Overview
 - Containers
     - A container offers an alternative to virtualization. It runs as a process in a host machine and uses various linux kernel features to isolate the process.
