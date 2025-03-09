@@ -1,0 +1,167 @@
+Kubernetes Security
+
+Agenda: Modules
+1. Kubernetes and Cloud Security Basics
+2. Cluster Security
+3. Container Security
+4. Code Security
+---
+
+Modules 1. Kubernetes and Cloud Security Basics
+
+Agenda
+1. Kubernetes Security
+2. The 4 C's of Kubernetes Security
+
+1. Kubernetes Security
+- Why do we need Security?
+    - Example: 
+        - Picture
+        - Tesla Kubernetes Cryptojacking Incident (2018) (https://arstechnica.com/information-technology/2018/02/tesla-cloud-resources-are-hacked-to-run-cryptocurrency-mining-malware/)
+            - What happened: Attackers exploited an exposed Kubernetes dashboard with no authentication and deployed a cryptomining script inside Tesla's Kubernetes cluster.
+            - Consequences: 
+                - Unauthorized access to Kubernetes workloads
+                - Increased cloud costs due to resource hijacking
+                - Potential exposure of sensitive telemetry data
+    - Conclusion:
+        - CyberAttack happens everywhere, everytime. A single misconfiguration can lead to data loss, downtime, or financial damage. By applying K8s Security, we can mitigate threats and build a resilient Kubernetes environment.
+        - Securing Kubernetes is not about “if” an attack will happen — it’s about being prepared when it does.
+- Kubernetes Architecture
+    - Picture
+    - Note: Controlling access to the Kubernetes API
+    - Note: Restricting access to etcd
+- Kubernetes Security Best Practices
+    - There are a few best practices that the tools we cover cannot check:
+        - 1. The kubernetes API should not be exposed on the internet. Ideally it is behind a VPN or some other firewalling, and only encrypted traffic is allowed to the kubernetes API.
+        - 2. Do not make everyone an administrator. You should limit individual users’ access using Role-Based Access Control.
+        - 3. Access to the etcd datastore should be strictly limited and configured to use TLS. It should also be encrypted to prevent tampering with or extracting of data.
+
+2. The 4 C's of Kubernetes Security
+- Cloud, Cluster, Container, Code
+- Picture
+---
+
+Modules 2. Cluster Security
+---
+
+Modules 3. Container Security
+
+1. Containers & Isolation Overview
+- Containers
+    - A container offers an alternative to virtualization. It runs as a process in a host machine and uses various linux kernel features to isolate the process.
+- Container Isolation
+    - cgroup - Can limit the amount of CPU or RAM a process has access to --> Prevents one container from consuming all system resources
+    - chroot - Changes the root directory from the actual linux root directory to a subdirectory with all of containers’ files unzipped into it --> Stops containers from accessing host system files
+    - namespacing - Uses various kinds of namespaces to ensure users, processes, networks, volume mounts, etc are isolated to just the container’s own process as well as any child processes it starts --> Prevents containers from seeing or interacting with each other
+
+2. Container Breakout
+- What is container breakout?
+    - If an application is given escalated privileges, the application could break out of its container and execute commands as if it were a user in the host operating system. 
+    - It allows an attacker to escape from a container to the underlying host. By doing so, the attacker can move laterally to other containers from the host or perform actions on the host itself. 
+    - Picture
+- Example: 
+    - a simple way to do this is to run as root and execute linux kernel commands using a perl script to change your root directory. 
+    - https://pentestmonkey.net/blog/chroot-breakout-perl
+
+3. Preventing Container Breakout
+- Using Kubernetes Security Context
+    - Do not allow applications to run as root or escalate their privileges
+    - Sample yaml
+            apiVersion: v1
+            kind: Pod
+            metadata:
+              name: security-context-demo
+            spec:
+              securityContext:
+                runAsUser: 1000
+                runAsGroup: 3000
+                fsGroup: 2000
+              containers:
+                - name: nginx
+                  image: nginx
+                  securityContext:
+                    allowPrivilegeEscalation: false
+                    privileged: false
+                    runAsNonRoot: true
+- Avoid Mounting Host’s Root Directory --> If not, non-root users might get access to the entire host filesystem
+- Limit Service Account’s Privileges
+- Limiting Linux Kernel Calls
+    - picture
+    - Capabilities provide the ability to give a specific set of privileges to a thread/process
+    - Can use SecComp and AppArmor tools to build policies and then enforce those across a number of namespaces or pods.
+    - Limit or add capabilities using the securityContext
+        - Sample yaml
+            apiVersion: v1
+            kind: Pod
+            metadata:
+              name: security-context-capa
+            spec:
+              containers:
+                - name: nginx
+                  image: nginx
+                  securityContext:
+                    capabilities:
+                        add: ["NET_ADMIN", "SYS_TIME"]
+
+4. Using Kubernetes' Built-in Security Features
+- Pod Security Admissions
+    - Pod Security Standards defines 3 isolation levels
+        - Privileged: Unrestricted. Allows for privilege escalation.
+        - Baseline: Minimally restricted. Prevents privilege escalations.
+        - Restricted: Heavily restricted, following pod hardening best practices.
+    - Example: 
+        - default-ns.yaml
+          apiVersion: v1
+          kind: Namespace
+          metadata:
+            name: default
+            labels:
+              pod-security.kubernetes.io/enforce: restricted
+        - nginx.yaml --> can not be created
+            apiVersion: v1
+            kind: Pod
+            metadata:
+              name: nginx
+            spec:
+              containers:
+              - name: nginx
+                image: nginx
+        - nginx-restricted.yaml --> OK
+            apiVersion: v1
+            kind: Pod
+            metadata:
+              name: nginx-secure
+            spec:
+              securityContext:
+                runAsNonRoot: true
+            containers:
+            - name: nginx
+              image: nginx
+              securityContext:
+                allowPrivilegeEscalation: false
+                capabilities:
+                  drop: ["ALL"]
+                seccompProfile:
+                  type: RuntimeDefault
+- Network Policies
+    - Kubernetes Network Policies allow to limit network traffic to or from pods. 
+    - By default, things are basically wide open, but with network policies you can specify as wide or narrow a policy as you need to
+        - Pod Selectors: Determines what pods this policy applies to.
+        - Ingress: Restricts traffic from other applications into your pod.
+        - Egress: Restricts traffic from your pod out to other applications.
+    - Sample yaml.
+
+5. Extending Security with External Tools
+- Why do we need External Tools?
+    - Shortcomings of Built-in Features
+        - Limits and rules are, for the most part, namespace-wide. 
+        - Not all conceivable rules can be setup. 
+        - Pod security standards are far less granular and may not be appropriate for all workloads.
+- Available Tools:
+    - OPA Gatekeeper
+        - Allow to set policies to validate pods. It can be configured to warn or block pods that do not meet its policies
+        - picture demo
+    - kubesec - Evaluates YAML manifests
+        - Kubesec is a security risk analysis tool, it looks for issues with the security configuration of Kubernetes pods and scores based on the policy rulesets.
+        - picutre demo
+        - Referral link: https://kubesec.io/
