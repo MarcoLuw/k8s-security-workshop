@@ -14,13 +14,14 @@
 
 ### 2. Securing Clusters with RBAC  
 - What is RBAC (Cluster Roles/Roles, Cluster Role Bindings/Role Bindings, Users, Service Accounts)  
-- Sample YAML + Demo  
+- Sample YAML + Demo (Demo: use picture instead)  
 
 ### 3. Security Auditing Tools  
-- Why Cluster Security Auditing?  
+- What is CIS Benchmark?
+- What is Penetration Testing?
 - Why need tools?  
 - **Demo:**  
-  - kube-bench (CIS Benchmark Testing)  
+  - kube-bench (CIS Benchmark Testing)
   - kube-hunter (Kubernetes Penetration Testing)  
 
 ## Module 3. Container Security  
@@ -51,12 +52,11 @@
 
 ## Module 4. Code Security  
 ### 1. Vulnerability Scanning & Intrusion Detection  
-- What it does?  
-- About CVE scanning  
+- What it does?  (Definitions, Threats, Benefits)
 
 ### 2. Scanning Container Images for CVEs  
+- What is CVE?
 - **CVE Scanning with Trivy** (Scans container images for known CVEs)  
-- **CVE Scanning in M9sweeper** (Extending security automation & policies)  
 
 ### 3. Runtime Intrusion Detection  
 - **Project Falco** and Intrusion Detection (Detecting abnormal behavior in clusters)  
@@ -74,4 +74,7 @@
   - **Slide:** [Google Slides](https://docs.google.com/presentation/d/1b8P19XOtsLzpS5vJtlUhzTVPEByhEQB6wBGotc7c_PE/edit#slide=id.g2010fd6445c_0_667)  
 - **Jake - Short Kubernetes Security Workshop:** [Workshop PDF](https://conf42.github.io/static/slides/Conf42%20Kube%20Native%202023%20-%20Jacob%20Beasley.pdf)  
   - **Lab Guide:** [Google Doc](https://docs.google.com/document/d/18wwz2vxDK1kdvCyUMXdr7XcKF0bQ8yrfuRi067RwP8A/edit?tab=t.0#heading=h.3qrtvg9967oy)  
-- **Scotty - Kubernetes Security Workshop:** [GitHub Repository](https://github.com/scotty-c/kubernetes-security-workshop/tree/master)  
+- **Scotty - Kubernetes Security Workshop:** [GitHub Repository](https://github.com/scotty-c/kubernetes-security-workshop/tree/master)
+- **Cybereason - Container Escape:** [Referral Link](https://www.cybereason.com/blog/container-escape-all-you-need-is-cap-capabilities)
+- **Pentestmonkey - Breaking Out of a Chroot Jail Using PERL:** [Referral Link](https://pentestmonkey.net/blog/chroot-breakout-perl)
+- **OWASP - Kubernetes Security Cheat Sheet:** [Referral Link](https://cheatsheetseries.owasp.org/cheatsheets/Kubernetes_Security_Cheat_Sheet.html)
