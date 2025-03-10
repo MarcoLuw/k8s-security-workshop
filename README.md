@@ -112,7 +112,8 @@ spec:
 - Avoid Mounting the Host’s Root Directory.
 - Limit Service Account Privileges.
 - Limit Linux Kernel Calls (SecComp, AppArmor).
-  ![Kernel Security](image/capabilities-systemcalls.png)
+
+![Kernel Security](image/capabilities-systemcalls.png)
 
 ```yaml
 apiVersion: v1
