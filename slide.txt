@@ -166,8 +166,19 @@ Agenda
         - Pod security standards are far less granular and may not be appropriate for all workloads.
 - Available Tools:
     - OPA Gatekeeper
+        - What is OPA Gatekeeper:
+            - Gatekeeper: Gatekeeper is a validating (allow or deny) and mutating (modify) admission webhook that enforces CRD-based policies executed by Open Policy Agent
+            - OPA (Open Policy Agent): a policy engine for Cloud Native environments hosted by CNCF 
+                - OPA evaluates policy rules written in Rego, a declarative query language.
+                - It then returns a decision (Allow/Deny, True/False, or custom JSON) to the system that requested it.
         - Allow to set policies to validate pods. It can be configured to warn or block pods that do not meet its policies
+        - For example, you can enforce policies like:
+            - All images must be from approved repositories
+            - All ingress hostnames must be globally unique
+            - All pods must have resource limits
+            - All namespaces must have a label that lists a point-of-contact
         - picture demo
+        - Referral link: https://open-policy-agent.github.io/gatekeeper/website/docs/
     - kubesec - Evaluates YAML manifests
         - Kubesec is a security risk analysis tool, it looks for issues with the security configuration of Kubernetes pods and scores based on the policy rulesets.
         - picutre demo

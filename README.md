@@ -201,10 +201,19 @@ spec:
 #### Available Tools
 
 - **OPA Gatekeeper** - Enforces policies to validate pods.
-  - **Picture:** ![OPA Gatekeeper](image/opa_gatekeeper.png)
+[Gatekeeper introduction](https://open-policy-agent.github.io/gatekeeper/website/docs/)
+[OPA Introduction](https://www.openpolicyagent.org/)
+[OPA Gatekeeper: Policy and Governance for Kubernetes](https://kubernetes.io/blog/2019/08/06/opa-gatekeeper-policy-and-governance-for-kubernetes/)
+
+![OPA Gatekeeper](image/opa_gatekeeper.png)
+  - **Gatekeeper**: is a validating (allow or deny) and mutating (modify) admission webhook that enforces CRD-based policies executed by Open Policy Agent
+  - **OPA (Open Policy Agent)**: a policy engine for Cloud Native environments hosted by CNCF 
+    - OPA evaluates policy rules written in Rego, a declarative query language
+    - It then returns a decision (Allow/Deny, True/False, or custom JSON) to the system that requested it.
 
 - **kubesec** - Evaluates YAML manifests for security risks.
-  - [Kubesec.io](https://kubesec.io/)
+[Kubesec.io](https://kubesec.io/)
+![Kubesec](image/kubesec.png)
   - **Picture:** ![Kubesec Demo](image/kubesec_demo.png)
 ---
 
