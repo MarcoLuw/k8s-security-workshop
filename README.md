@@ -18,12 +18,10 @@
 
 #### Why do we need Security?
 
-- **Example:**
+- **Example: Tesla Kubernetes Cryptojacking Incident (2018)** [Article Link](https://arstechnica.com/information-technology/2018/02/tesla-cloud-resources-are-hacked-to-run-cryptocurrency-mining-malware/)
 
 ![Tesla Kubernetes Cryptojacking Incident](image/tesla-credentials.png)
-  - **Tesla Kubernetes Cryptojacking Incident (2018)**  
-      [Article Link](https://arstechnica.com/information-technology/2018/02/tesla-cloud-resources-are-hacked-to-run-cryptocurrency-mining-malware/)
-    
+      
   - **What happened:** Attackers exploited an exposed Kubernetes dashboard with no authentication and deployed a cryptomining script inside Tesla's Kubernetes cluster.
       
   - **Consequences:**
@@ -112,9 +110,12 @@ spec:
 ```
 - Avoid Mounting the Host’s Root Directory.
 - Limit Service Account Privileges.
-- Limit Linux Kernel Calls (SecComp, AppArmor).
+- Limit Linux Kernel Calls (by using SecComp, AppArmor).
+  - Capabilities provide the ability to give a specific set of privileges to a thread/process
+  --> Can use *SecComp* and *AppArmor* tools to build policies and then enforce those across a number of namespaces or pods.
 
 ![Kernel Security](image/capabilities-systemcalls.png)
+  - Limit or add capabilities using the securityContext
 
 ```yaml
 apiVersion: v1
