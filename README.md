@@ -19,7 +19,7 @@
 #### Why do we need Security?
 
 - **Example:**
-   ![Tesla Kubernetes Cryptojacking Incident](image/tesla-credentials.png)
+   ![:scale 10%][Tesla Kubernetes Cryptojacking Incident](image/tesla-credentials.png)
   - **Tesla Kubernetes Cryptojacking Incident (2018)**  
       [Article Link](https://arstechnica.com/information-technology/2018/02/tesla-cloud-resources-are-hacked-to-run-cryptocurrency-mining-malware/)
     
@@ -36,7 +36,7 @@
 
 #### Kubernetes Architecture
 
-![Kubernetes Architecture](image/components-of-kubernetes.png)
+![:scale 10%][Kubernetes Architecture](image/components-of-kubernetes.png)
 
 #### Kubernetes Security Best Practices
 
@@ -47,7 +47,7 @@
 ### 2. The 4 C's of Kubernetes Security
 
 **Cloud, Cluster, Container, Code**
-![4 C's of Kubernetes Security](image/4C-cloud.png)
+![:scale 10%][4 C's of Kubernetes Security](image/4C-cloud.png)
 
 ---
 
@@ -81,7 +81,7 @@
 #### What is container breakout?
 - If an application is given escalated privileges, it could break out of its container and execute commands as if it were a user in the host OS.
 - This allows an attacker to escape from a container to the host and move laterally across other containers.
-  ![Container Breakout](image/3.2-container-breakout.png)
+  ![:scale 10%][Container Breakout](image/3.2-container-breakout.png)
 
 #### Example
 - A simple way to do this is to run as root and execute Linux kernel commands using a Perl script to change the root directory.
@@ -114,7 +114,7 @@ spec:
 - Avoid Mounting the Host’s Root Directory.
 - Limit Service Account Privileges.
 - Limit Linux Kernel Calls (SecComp, AppArmor).
-  ![Kernel Security](image/capabilities-systemcalls.png)
+  ![:scale 10%][Kernel Security](image/capabilities-systemcalls.png)
 
 ```yaml
 apiVersion: v1
@@ -201,8 +201,8 @@ spec:
 #### Available Tools
 
 - **OPA Gatekeeper** - Enforces policies to validate pods.
-  - **Picture:** ![OPA Gatekeeper](image/opa_gatekeeper.png)
+  - **Picture:** ![:scale 10%][OPA Gatekeeper](image/opa_gatekeeper.png)
 
 - **kubesec** - Evaluates YAML manifests for security risks.
   - [Kubesec.io](https://kubesec.io/)
-  - **Picture:** ![Kubesec Demo](image/kubesec_demo.png)
+  - **Picture:** ![:scale 10%][Kubesec Demo](image/kubesec_demo.png)
