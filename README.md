@@ -210,7 +210,7 @@ spec:
 
 - **kubesec** - Evaluates YAML manifests for security risks [Kubesec.io](https://kubesec.io/)
   
-  ![Kubesec](image/kubesec.png)
+  ![Kubesec](image/kubesec1.png)
   - **Picture:** ![Kubesec Demo](image/kubesec_demo.png)
 ---
 
