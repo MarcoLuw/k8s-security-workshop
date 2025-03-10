@@ -202,7 +202,6 @@ spec:
 #### Available Tools
 
 - **OPA Gatekeeper** - Enforces policies to validate pods.
-
 ![OPA Gatekeeper](image/opa_gatekeeper.png)
   - **Gatekeeper**: is a validating (allow or deny) and mutating (modify) admission webhook that enforces CRD-based policies executed by Open Policy Agent
   - **OPA (Open Policy Agent)**: a policy engine for Cloud Native environments hosted by CNCF 
