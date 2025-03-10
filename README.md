@@ -89,7 +89,7 @@
 
 ### 3. Preventing Container Breakout
 
-#### Using Kubernetes Security Context
+- Using Kubernetes Security Context
 
 ```yaml
 apiVersion: v1
@@ -109,8 +109,6 @@ spec:
         privileged: false
         runAsNonRoot: true
 ```
-
-#### Additional Security Measures
 - Avoid Mounting the Host’s Root Directory.
 - Limit Service Account Privileges.
 - Limit Linux Kernel Calls (SecComp, AppArmor).
