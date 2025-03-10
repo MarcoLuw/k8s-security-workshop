@@ -209,8 +209,7 @@ spec:
     - It then returns a decision (Allow/Deny, True/False, or custom JSON) to the system that requested it.
 
 - **kubesec** - Evaluates YAML manifests for security risks [Kubesec.io](https://kubesec.io/)
-
-![Kubesec](image/kubesec.png)
+  ![Kubesec](image/kubesec.png)
   - **Picture:** ![Kubesec Demo](image/kubesec_demo.png)
 ---
 
