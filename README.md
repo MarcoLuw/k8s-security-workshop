@@ -210,7 +210,7 @@ spec:
 
 ## Demo
 
-#### M9Sweeper
+#### All-in-one with M9Sweeper
 ```
                     ┌──────────────────────────┐
                     │      M9Sweeper UI        │
