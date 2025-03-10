@@ -19,6 +19,7 @@
 #### Why do we need Security?
 
 - **Example:**
+
 ![Tesla Kubernetes Cryptojacking Incident](image/tesla-credentials.png)
   - **Tesla Kubernetes Cryptojacking Incident (2018)**  
       [Article Link](https://arstechnica.com/information-technology/2018/02/tesla-cloud-resources-are-hacked-to-run-cryptocurrency-mining-malware/)
