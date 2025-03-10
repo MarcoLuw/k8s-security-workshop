@@ -206,3 +206,32 @@ spec:
 - **kubesec** - Evaluates YAML manifests for security risks.
   - [Kubesec.io](https://kubesec.io/)
   - **Picture:** ![Kubesec Demo](image/kubesec_demo.png)
+---
+
+## Demo
+
+#### M9Sweeper
+                    ┌──────────────────────────┐
+                    │      M9Sweeper UI        │
+                    │    (Dashboard Service)   │
+                    └──────────┬──────────────┘
+                               │
+         ┌─────────────────────▼─────────────────────┐
+         │                Trawler                    │
+         │  (Security Scanning Engine in M9Sweeper)  │
+         └─────────────────────┬─────────────────────┘
+                               │
+  ┌──────────────┬─────────────┴─────────────┬──────────────┐
+  │              │                           │              │
+  ▼              ▼                           ▼              ▼
+KubeSec     Kube-Bench                   Kube-Hunter     Falco
+(Checks     (CIS Benchmark)              (Pen-testing)  (Runtime Sec)
+YAMLs)  
+
+    ┌──────────────────────────────────────────────┐
+    │  RabbitMQ (Message Queue)                    │
+    └──────────────────────────────────────────────┘
+                     │
+    ┌──────────────────────────────────────────────┐
+    │  PostgreSQL (Database for Scan Results)      │
+    └──────────────────────────────────────────────┘
