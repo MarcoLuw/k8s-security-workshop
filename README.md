@@ -208,8 +208,8 @@ spec:
     - OPA evaluates policy rules written in Rego, a declarative query language
     - It then returns a decision (Allow/Deny, True/False, or custom JSON) to the system that requested it.
 
-- **kubesec** - Evaluates YAML manifests for security risks.
-[Kubesec.io](https://kubesec.io/)
+- **kubesec** - Evaluates YAML manifests for security risks [Kubesec.io](https://kubesec.io/)
+
 ![Kubesec](image/kubesec.png)
   - **Picture:** ![Kubesec Demo](image/kubesec_demo.png)
 ---
